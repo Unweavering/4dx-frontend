@@ -1,38 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.tsx
+import { Routes, Route, Link } from "react-router-dom";
+import WigListPage from "./pages/WigListPage";
 
 function App() {
-  const [count, setCount] = useState(0)
+    return (
+        <div className="p-6">
+            <h1 className="text-3xl font-bold mb-4 text-blue-600">4DX 목표 관리 앱</h1>
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-        <h1 className="text-4xl font-bold text-blue-500">Tailwind 작동 확인!</h1>
+            {/* 네비게이션 (임시) */}
+            <nav className="mb-6">
+                <Link to="/wig" className="text-blue-500 underline">
+                    WIG 목록 보기
+                </Link>
+            </nav>
 
-
-        <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+            {/* 라우팅 */}
+            <Routes>
+                <Route path="/wig" element={<WigListPage />} />
+                {/* 여기에 다른 페이지들도 차차 추가하면 됨 */}
+            </Routes>
+        </div>
+    );
 }
 
-export default App
+export default App;
